@@ -1,0 +1,8 @@
+Copyright (c) 2026 Wiktor Pietrucha
+
+All rights reserved.
+
+You may view and study the source code,
+but you may not copy, modify, distribute,
+or use this software or its parts for any purpose
+without explicit written permission.

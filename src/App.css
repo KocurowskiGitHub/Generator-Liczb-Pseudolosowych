@@ -1,0 +1,346 @@
+/* ═══════════════════════════════════════════
+   App.css – Generator Liczb Pseudolosowych
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ── Zmienne ── */
+:root {
+  --bg:          #0d0f14;
+  --bg-panel:    #13161e;
+  --bg-panel-2:  #1a1e2a;
+  --border:      #2a2f3f;
+  --border-hl:   #3d4560;
+  --accent:      #e8ff47;
+  --accent-dim:  #b8cc30;
+  --accent-glow: rgba(232, 255, 71, 0.18);
+  --danger:      #ff5566;
+  --danger-dim:  #cc3344;
+  --text:        #e8ecf4;
+  --text-muted:  #6b7494;
+  --text-dim:    #9aa3c0;
+  --draw-num:    #e8ff47;
+  --radius:      10px;
+  --radius-lg:   16px;
+  --font-ui:     'Syne', sans-serif;
+  --font-mono:   'JetBrains Mono', monospace;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  min-height: 100vh;
+}
+
+/* ── Wrapper ── */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 0 48px;
+}
+
+/* ── Header ── */
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 20px 36px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+
+.app-title {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Główny układ ── */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 24px;
+  padding: 32px 36px;
+  flex: 1;
+  align-items: start;
+}
+
+/* ── Panel bazowy ── */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel__heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Lewa kolumna ── */
+.add-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ── Środkowy panel ── */
+.panel--center {
+  background: var(--bg-panel-2);
+  border-color: var(--border-hl);
+  gap: 20px;
+}
+
+.range-row {
+  display: flex;
+  gap: 12px;
+}
+
+.range-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.range-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.center-body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: start;
+  min-height: 240px;
+}
+
+/* ── Subpanele w środku ── */
+.sub-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sub-panel__heading {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Panel losowania ── */
+.draw-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+}
+
+.drawn-number {
+  font-family: var(--font-mono);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--draw-num);
+  text-shadow: 0 0 24px var(--accent-glow), 0 0 48px var(--accent-glow);
+  line-height: 1;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.drawn-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── Stopka środka ── */
+.center-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  text-align: center;
+}
+
+.watermark {
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ── Lista liczb ── */
+.number-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.number-list--compact {
+  max-height: 180px;
+}
+
+/* Scrollbar */
+.number-list::-webkit-scrollbar { width: 4px; }
+.number-list::-webkit-scrollbar-track { background: transparent; }
+.number-list::-webkit-scrollbar-thumb { background: var(--border-hl); border-radius: 4px; }
+
+.number-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.number-list__item:hover {
+  border-color: var(--border-hl);
+  background: #1a1e2a;
+}
+
+.number-list__empty {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 8px 4px;
+}
+
+/* ── Inputy ── */
+.input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: 9px 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: textfield;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+.input::placeholder { color: var(--text-muted); }
+
+.input:focus {
+  border-color: var(--accent-dim);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input--range {
+  font-size: 0.85rem;
+  padding: 7px 10px;
+}
+
+/* ── Przyciski ── */
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.btn:active { transform: scale(0.96); }
+
+/* Dodaj */
+.btn--accent {
+  background: var(--accent);
+  color: #0d0f14;
+  font-size: 0.75rem;
+  padding: 9px 14px;
+}
+
+.btn--accent:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* Losuj */
+.btn--draw {
+  background: var(--accent);
+  color: #0d0f14;
+  font-size: 0.8rem;
+  padding: 10px 24px;
+  border-radius: 999px;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.btn--draw:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 0 32px var(--accent-glow);
+}
+
+/* Usuń */
+.btn--remove {
+  background: transparent;
+  color: var(--danger);
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border: 1px solid var(--danger-dim);
+  border-radius: 6px;
+}
+
+.btn--remove:hover {
+  background: var(--danger-dim);
+  color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 20px 16px;
+  }
+
+  .center-body {
+    grid-template-columns: 1fr;
+  }
+
+  .draw-panel { padding: 12px 0; }
+}
