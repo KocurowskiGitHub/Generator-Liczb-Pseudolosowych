@@ -12,7 +12,10 @@ Projekt generatora liczb pseudolosowych wykonany przy użyciu Vite (React + Java
 - React
 - JavaScript
 - CSS
-
+## Link do strony internetowej
+```bash
+https://6a03bd81afd9040244183e7d--gleaming-tiramisu-31c47c.netlify.app/
+```
 ## Uruchomienie projektu
 
 Instalacja zależności:
